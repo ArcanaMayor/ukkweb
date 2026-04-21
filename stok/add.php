@@ -1,7 +1,6 @@
 <?php
 require_once("../dbConnection.php");
 
-// Ambil semua buku yang BELUM punya stok
 $result_buku = mysqli_query($mysqli,
     "SELECT buku.id_buku, buku.judul
      FROM buku
@@ -10,7 +9,6 @@ $result_buku = mysqli_query($mysqli,
      ORDER BY buku.judul ASC"
 );
 
-// Jika ada id_buku dari GET (dari tombol di index.php), preselect
 $preselect = isset($_GET['id_buku']) ? (int)$_GET['id_buku'] : 0;
 ?>
 <html>
