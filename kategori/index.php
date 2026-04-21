@@ -58,7 +58,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 
     <form method="GET" class="form-search">
         <input type="text" name="search" placeholder="Search..." value="<?= $keyword ?>">
-        <button type="submit">Cari</button>
+        <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
     </form>
 </div>
 
