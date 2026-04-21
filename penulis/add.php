@@ -1,8 +1,9 @@
 <html>
 <head>
 	<title>Tambah Penulis</title>
+    <link rel="stylesheet" href="../style1.css">
 </head>
-<!-- <link rel="stylesheet" href="../style1.css"> -->
+
 
 <body>
 	<h2>Tambah Penulis</h2>

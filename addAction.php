@@ -35,6 +35,17 @@ if (isset($_POST['submit'])) {
         ('$judul', '$isbn', '$tahun_terbit', '$halaman', '$ringkasan', '$id_penulis', '$id_kategori', '$id_penerbit')"
     );
 
+    if ($result) {
+        // Ambil id_buku yang baru diinsert
+        $id_buku_baru = mysqli_insert_id($mysqli);
+        $jumlah_stok  = (int)($_POST['jumlah_stok'] ?? 0);
+
+        // Insert stok untuk buku baru
+        mysqli_query($mysqli,
+            "INSERT INTO stok (id_buku, jumlah) VALUES ($id_buku_baru, $jumlah_stok)"
+        );
+    }
+
     header("Location: index.php");
     exit();
 }

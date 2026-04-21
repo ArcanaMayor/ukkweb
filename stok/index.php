@@ -26,7 +26,7 @@ $result = mysqli_query($mysqli,
      FROM stok
      LEFT JOIN buku ON stok.id_buku = buku.id_buku
      $where
-     ORDER BY stok.id_stok DESC
+     ORDER BY stok.id_stok ASC
      LIMIT $start, $limit"
 );
 
@@ -58,6 +58,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 <h3>Daftar Stok Buku</h3>
 
 <div class="top-bar">
+    <a href="add.php" class="btn-add">+ Tambah Stok</a>
     <form method="GET" class="form-search">
         <input type="text" name="search" placeholder="Cari judul buku..." value="<?= htmlspecialchars($keyword) ?>">
         <button type="submit">Cari</button>
@@ -66,7 +67,6 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 
 <table class="table-book">
     <tr>
-        <th>ID Stok</th>
         <th>Judul Buku</th>
         <th>Jumlah Stok</th>
         <th>Action</th>
@@ -74,7 +74,6 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 
     <?php while ($res = mysqli_fetch_assoc($result)) { ?>
         <tr>
-            <td><?= $res['id_stok'] ?></td>
             <td><?= htmlspecialchars($res['judul']) ?></td>
             <td><?= $res['jumlah'] ?></td>
             <td>

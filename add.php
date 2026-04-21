@@ -80,6 +80,11 @@
     </td>
 </tr>
 
+			<tr>
+				<td>Jumlah Stok</td>
+				<td><input type="number" name="jumlah_stok" min="0" value="0"></td>
+			</tr>
+
 			<tr> 
 				<td></td>
 				<td><input type="submit" name="submit" value="Simpan"></td>

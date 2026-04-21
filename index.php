@@ -131,7 +131,11 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
                        href="delete.php?id_buku=<?= $res['id_buku'] ?>"
                        onclick="return confirm('Yakin ingin hapus?')">Delete</a>
                     <span class="sep">|</span>
-                    <a class="stok-link" href="stok/edit.php?id_stok=<?= $res['id_stok'] ?>">Stok</a>
+                    <?php if ($res['id_stok']): ?>
+                        <a class="stok-link" href="stok/edit.php?id_stok=<?= $res['id_stok'] ?>">Edit Stok</a>
+                    <?php else: ?>
+                        <a class="stok-link" href="stok/add.php?id_buku=<?= $res['id_buku'] ?>">Tambah Stok</a>
+                    <?php endif; ?>
                 </div>
             </td>
         </tr>
