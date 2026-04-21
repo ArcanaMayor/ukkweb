@@ -62,7 +62,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
     <a href="add.php" class="btn-add-icon"><i class="ph ph-plus"></i> Tambah Stok</a>
     <form method="GET" class="form-search">
         <input type="text" name="search" placeholder="Cari judul buku..." value="<?= htmlspecialchars($keyword) ?>">
-        <button type="submit">Cari</button>
+        <button type="submit"><i class="ph ph-magnifying-glass"></i></button>
     </form>
 </div>
 
