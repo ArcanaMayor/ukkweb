@@ -39,6 +39,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
     <meta charset="UTF-8">
     <title>Stok Buku</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
 
@@ -58,7 +59,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 <h3>Daftar Stok Buku</h3>
 
 <div class="top-bar">
-    <a href="add.php" class="btn-add">+ Tambah Stok</a>
+    <a href="add.php" class="btn-add-icon"><i class="ph ph-plus"></i> Tambah Stok</a>
     <form method="GET" class="form-search">
         <input type="text" name="search" placeholder="Cari judul buku..." value="<?= htmlspecialchars($keyword) ?>">
         <button type="submit">Cari</button>
@@ -66,21 +67,25 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 </div>
 
 <table class="table-book">
+    <thead>
     <tr>
         <th>Judul Buku</th>
         <th>Jumlah Stok</th>
         <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
 
     <?php while ($res = mysqli_fetch_assoc($result)) { ?>
         <tr>
             <td><?= htmlspecialchars($res['judul']) ?></td>
             <td><?= $res['jumlah'] ?></td>
             <td>
-                <a class="edit" href="edit.php?id_stok=<?= $res['id_stok'] ?>">Edit</a>
+                <a class="btn-icon btn-icon-edit" href="edit.php?id_stok=<?= $res['id_stok'] ?>" title="Edit Stok"><i class="ph ph-pencil-simple"></i></a>
             </td>
         </tr>
     <?php } ?>
+    </tbody>
 </table>
 
 <br>

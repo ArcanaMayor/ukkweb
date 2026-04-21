@@ -50,6 +50,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
     <title>Aplikasi Katalog Buku</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="icon.jpeg" type="image/png">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
@@ -74,7 +75,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 </div>
 
 <div class="top-bar">
-    <a href="add.php" class="btn-add">➕</a>
+    <a href="add.php" class="btn-add-icon"><i class="ph ph-plus"></i> Tambah</a>
 
     <form method="GET" class="form-search">
         <input type="text" name="search" placeholder="Search..." value="<?= $keyword ?>">
@@ -83,6 +84,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 </div>
 
 <table class="table-book">
+    <thead>
     <tr>
         <th>Judul</th>
         <th>Penulis</th>
@@ -93,6 +95,8 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
         <th>Stok</th>
         <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
 
     <?php while ($res = mysqli_fetch_assoc($result)) { ?>
         <tr>
@@ -106,40 +110,24 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
                 echo htmlspecialchars(mb_strlen($ringkasan) > 150 ? mb_substr($ringkasan, 0, 150) . '...' : $ringkasan);
             ?></td>
 
-            <td class="stok-cell">
-                <?php
-                    $stok = (int)$res['jumlah_stok'];
-                    if ($stok == 0) {
-                        $badge_class = 'badge-habis';
-                        $badge_label = 'Habis';
-                    } elseif ($stok <= 3) {
-                        $badge_class = 'badge-sedikit';
-                        $badge_label = $stok;
-                    } else {
-                        $badge_class = 'badge-tersedia';
-                        $badge_label = $stok;
-                    }
-                ?>
-                <span class="stok-badge <?= $badge_class ?>"><?= $badge_label ?></span>
-            </td>
+            <td class="stok-cell"><?= (int)$res['jumlah_stok'] ?></td>
 
             <td class="action-cell">
                 <div class="action-links">
-                    <a class="edit" href="edit.php?id_buku=<?= $res['id_buku'] ?>">Edit</a>
-                    <span class="sep">|</span>
-                    <a class="delete"
+                    <a class="btn-icon btn-icon-edit" href="edit.php?id_buku=<?= $res['id_buku'] ?>" title="Edit"><i class="ph ph-pencil-simple"></i></a>
+                    <a class="btn-icon btn-icon-delete"
                        href="delete.php?id_buku=<?= $res['id_buku'] ?>"
-                       onclick="return confirm('Yakin ingin hapus?')">Delete</a>
-                    <span class="sep">|</span>
+                       onclick="return confirm('Yakin ingin hapus?')" title="Hapus"><i class="ph ph-trash"></i></a>
                     <?php if ($res['id_stok']): ?>
-                        <a class="stok-link" href="stok/edit.php?id_stok=<?= $res['id_stok'] ?>">Edit Stok</a>
+                        <a class="btn-icon btn-icon-stok" href="stok/edit.php?id_stok=<?= $res['id_stok'] ?>" title="Edit Stok"><i class="ph ph-package"></i></a>
                     <?php else: ?>
-                        <a class="stok-link" href="stok/add.php?id_buku=<?= $res['id_buku'] ?>">Tambah Stok</a>
+                        <a class="btn-icon btn-icon-add-stok" href="stok/add.php?id_buku=<?= $res['id_buku'] ?>" title="Tambah Stok"><i class="ph ph-plus-circle"></i></a>
                     <?php endif; ?>
                 </div>
             </td>
         </tr>
     <?php } ?>
+    </tbody>
 </table>
 <br>
 

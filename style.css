@@ -132,26 +132,57 @@ h3 {
 }
 
 .table-book {
-    width: 85%;
-    margin: 5px auto 10px auto;
+    width: 90%;
+    margin: 5px auto 20px auto;
     background: #ffffff;
     border-collapse: collapse;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    font-size: 14px;
+}
+
+.table-book thead tr {
+    background: #e7d4d4;
 }
 
 .table-book th {
-    background: #e7d4d4;
-    padding: 16px;
-}
-.table-book td {
-    padding: 18px;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #5a3a3a;
+    border-bottom: 2px solid #d4b4b4;
+    white-space: nowrap;
 }
 
-.table-book tr:hover {
+.table-book td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    color: #333;
+    line-height: 1.5;
+}
+
+.table-book tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-book tbody tr:nth-child(even) {
+    background: #fdf9f9;
+}
+
+.table-book tr:hover td {
     background: #faf2f2;
+}
+
+/* Kolom Action selalu center & tidak wrap */
+.table-book th:last-child,
+.table-book td:last-child {
+    text-align: center;
+    white-space: nowrap;
 }
 
 .edit {
@@ -269,3 +300,58 @@ h3 {
     color: #444;
     line-height: 1.5;
 }
+
+/* ── Icon Action Buttons ── */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: background 0.2s, transform 0.1s;
+}
+.btn-icon:hover {
+    transform: scale(1.12);
+}
+.btn-icon-edit {
+    background: #e8f0fe;
+    color: #1a56db;
+}
+.btn-icon-edit:hover { background: #c7d9fc; }
+
+.btn-icon-delete {
+    background: #fde8e8;
+    color: #b91c1c;
+}
+.btn-icon-delete:hover { background: #fca5a5; }
+
+.btn-icon-stok {
+    background: #ecfdf5;
+    color: #065f46;
+}
+.btn-icon-stok:hover { background: #a7f3d0; }
+
+.btn-icon-add-stok {
+    background: #fff7ed;
+    color: #9a3412;
+}
+.btn-icon-add-stok:hover { background: #fed7aa; }
+
+.btn-add-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #6a4c4c;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+.btn-add-icon:hover { background: #543939; }
+.btn-add-icon i { font-size: 18px; }

@@ -36,6 +36,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 <head>
     <title>Penerbit</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
@@ -58,7 +59,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 <h3> Daftar Penerbit</h3>
 
 <div class="top-bar">
-    <a href="add.php" class="btn-add">+ Tambah</a>
+    <a href="add.php" class="btn-add-icon"><i class="ph ph-plus"></i> Tambah</a>
 
     <form method="GET" class="form-search">
         <input type="text" name="search" placeholder="Search..." value="<?= $keyword ?>">
@@ -68,27 +69,28 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 
 
 <table class="table-book">
+    <thead>
     <tr>
         <th>Nama Penerbit</th>
         <th>Alamat</th>
         <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
 
     <?php while ($res = mysqli_fetch_assoc($result)) { ?>
         <tr>
             <td><?= $res['nama_penerbit'] ?></td>
             <td><?= $res['alamat'] ?></td>
             <td>
-                <a class="edit" href="edit.php?id_penerbit=<?= $res['id_penerbit'] ?>">Edit</a>
-                &nbsp;|&nbsp;
-                <a class="delete" 
-                   href="delete.php?id_penerbit=<?= $res['id_penerbit'] ?>" 
-                   onclick="return confirm('Yakin ingin menghapus?')">
-                    Delete
-                </a>
+                <a class="btn-icon btn-icon-edit" href="edit.php?id_penerbit=<?= $res['id_penerbit'] ?>" title="Edit"><i class="ph ph-pencil-simple"></i></a>
+                <a class="btn-icon btn-icon-delete"
+                   href="delete.php?id_penerbit=<?= $res['id_penerbit'] ?>"
+                   onclick="return confirm('Yakin ingin menghapus?')" title="Hapus"><i class="ph ph-trash"></i></a>
             </td>
         </tr>
     <?php } ?>
+    </tbody>
 </table>
 <br>
 
