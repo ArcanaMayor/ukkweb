@@ -1,7 +1,7 @@
 <?php
 require_once("../dbConnection.php");
 
-$limit = 2;
+$limit = 10;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
