@@ -42,7 +42,7 @@ if (!$data) {
             <tr>
                 <td>Jumlah Stok</td>
                 <td>
-                    <input type="number" name="jumlah" value="<?= $data['jumlah'] ?>" min="0" required>
+                    <input type="number" name="jumlah" value="<?= $data['jumlah'] ?>" min="0" required> 
                 </td>
             </tr>
             <tr>

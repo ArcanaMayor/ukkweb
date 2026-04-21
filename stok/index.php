@@ -69,6 +69,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 <table class="table-book">
     <thead>
     <tr>
+        <th>ID Buku</th>
         <th>Judul Buku</th>
         <th>Jumlah Stok</th>
         <th>Action</th>
@@ -78,6 +79,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 
     <?php while ($res = mysqli_fetch_assoc($result)) { ?>
         <tr>
+            <td><?= $res['id_buku'] ?></td>
             <td><?= htmlspecialchars($res['judul']) ?></td>
             <td><?= $res['jumlah'] ?></td>
             <td>
