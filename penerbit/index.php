@@ -50,6 +50,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
             <a href="../kategori">Kategori</a>
             <a class="active" href="index.php">Penerbit</a>
             <a href="../penulis">Penulis</a>
+            <a href="../stok">Stok</a>
         </div>
     </div>
 </div>

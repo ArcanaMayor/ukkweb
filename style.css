@@ -256,3 +256,16 @@ h3 {
 .stok-link:hover {
     text-decoration: underline;
 }
+
+.ringkasan-cell {
+    max-width: 260px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+}

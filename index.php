@@ -101,7 +101,10 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
             <td><?= $res['nama_penerbit'] ?></td>
             <td><?= $res['tahun_terbit'] ?></td>
             <td><?= $res['nama_kategori'] ?></td>
-            <td><?= $res['ringkasan'] ?></td>
+            <td><?php
+                $ringkasan = $res['ringkasan'];
+                echo htmlspecialchars(mb_strlen($ringkasan) > 150 ? mb_substr($ringkasan, 0, 150) . '...' : $ringkasan);
+            ?></td>
 
             <td class="stok-cell">
                 <?php
