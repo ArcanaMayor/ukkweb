@@ -91,6 +91,18 @@ INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `stok`
+--
+
+CREATE TABLE `stok` (
+  `id_stok` int(10) NOT NULL,
+  `id_buku` int(11) UNSIGNED NOT NULL,
+  `jumlah` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `penulis`
 --
 
@@ -142,6 +154,13 @@ ALTER TABLE `penulis`
   ADD PRIMARY KEY (`id_penulis`);
 
 --
+-- Indeks untuk tabel `stok`
+--
+ALTER TABLE `stok`
+  ADD PRIMARY KEY (`id_stok`),
+  ADD KEY `id_buku` (`id_buku`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -170,6 +189,12 @@ ALTER TABLE `penulis`
   MODIFY `id_penulis` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT untuk tabel `stok`
+--
+ALTER TABLE `stok`
+  MODIFY `id_stok` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
@@ -180,6 +205,12 @@ ALTER TABLE `buku`
   ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`id_penulis`) REFERENCES `penulis` (`id_penulis`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `buku_ibfk_3` FOREIGN KEY (`id_penerbit`) REFERENCES `penerbit` (`id_penerbit`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `stok`
+--
+ALTER TABLE `stok`
+  ADD CONSTRAINT `stok_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id_buku`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

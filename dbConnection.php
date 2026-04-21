@@ -1,6 +1,6 @@
 <?php
 $databaseHost = 'localhost';
-$databaseName = 'perpustakaan_ukk26_adrian1';
+$databaseName = 'perpustakaan_ukk26';
 $databaseUsername = 'adrian';
 $databasePassword = 'qwerty';
 
