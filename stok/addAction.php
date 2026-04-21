@@ -9,10 +9,8 @@ if ($id_buku <= 0) {
     exit;
 }
 
-// Cek apakah sudah ada stok untuk buku ini
 $cek = mysqli_query($mysqli, "SELECT id_stok FROM stok WHERE id_buku = $id_buku");
 if (mysqli_num_rows($cek) > 0) {
-    // Sudah ada, redirect ke edit
     $row = mysqli_fetch_assoc($cek);
     header("Location: edit.php?id_stok=" . $row['id_stok']);
     exit;
