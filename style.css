@@ -178,9 +178,9 @@ h3 {
     background: #faf2f2;
 }
 
-/* Kolom Action selalu center & tidak wrap */
-.table-book th:last-child,
-.table-book td:last-child {
+/* Kolom Action & Stok selalu center & tidak wrap */
+.action-cell,
+.stok-cell {
     text-align: center;
     white-space: nowrap;
 }

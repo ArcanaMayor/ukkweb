@@ -92,8 +92,8 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
         <th>Tahun</th>
         <th>Kategori</th>
         <th>Ringkasan</th>
-        <th>Stok</th>
-        <th>Action</th>
+        <th class="action-cell">Action</th>
+        <th class="stok-cell">Stok</th>
     </tr>
     </thead>
     <tbody>
@@ -110,8 +110,6 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
                 echo htmlspecialchars(mb_strlen($ringkasan) > 150 ? mb_substr($ringkasan, 0, 150) . '...' : $ringkasan);
             ?></td>
 
-            <td class="stok-cell"><?= (int)$res['jumlah_stok'] ?></td>
-
             <td class="action-cell">
                 <div class="action-links">
                     <a class="btn-icon btn-icon-edit" href="edit.php?id_buku=<?= $res['id_buku'] ?>" title="Edit"><i class="ph ph-pencil-simple"></i></a>
@@ -125,6 +123,8 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
                     <?php endif; ?>
                 </div>
             </td>
+
+            <td class="stok-cell"><?= (int)$res['jumlah_stok'] ?></td>
         </tr>
     <?php } ?>
     </tbody>
