@@ -23,12 +23,8 @@ if (isset($_POST['submit'])) {
 		
 		
 		
-		// Show link to the previous page
 		echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 	} else { 
-		// If all the fields are filled (not empty) 
-
-		// Insert data into database
 		$result = mysqli_query($mysqli, "INSERT INTO penulis (`nama_penulis`, `biodata`) VALUES ('$nama_penulis', '$biodata')");
 		
 		header("Location: index.php");

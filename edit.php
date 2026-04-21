@@ -5,7 +5,6 @@ $id_buku = $_GET['id_buku'];
 
 $result = mysqli_query($mysqli, "SELECT * FROM buku WHERE id_buku = $id_buku");
 
-// Fetch the next row of a result set as an associative array
 $resultData = mysqli_fetch_assoc($result);
 $id_buku = $resultData['id_buku'];
 $judul = $resultData['judul'];

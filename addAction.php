@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
     $id_kategori  = $_POST['id_kategori'] ?? '';
     $id_penerbit  = $_POST['id_penerbit'] ?? '';
 
-    // Validasi
     if (
         empty($judul) || empty($isbn) || empty($tahun_terbit) ||
         empty($halaman) || empty($ringkasan) ||
@@ -27,7 +26,6 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    // Insert ke database
     $result = mysqli_query($mysqli,
         "INSERT INTO buku
         (judul, isbn, tahun_terbit, halaman, ringkasan, id_penulis, id_kategori, id_penerbit)
@@ -36,11 +34,9 @@ if (isset($_POST['submit'])) {
     );
 
     if ($result) {
-        // Ambil id_buku yang baru diinsert
         $id_buku_baru = mysqli_insert_id($mysqli);
         $jumlah_stok  = (int)($_POST['jumlah_stok'] ?? 0);
 
-        // Insert stok untuk buku baru
         mysqli_query($mysqli,
             "INSERT INTO stok (id_buku, jumlah) VALUES ($id_buku_baru, $jumlah_stok)"
         );

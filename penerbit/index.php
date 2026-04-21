@@ -41,7 +41,6 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-container">
         <div class="logo">📚 Aplikasi Katalog Buku</div>
