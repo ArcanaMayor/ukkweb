@@ -188,3 +188,71 @@ h3 {
     background: #b8b8b8;
     pointer-events: none;
 }
+
+
+.stok-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    margin-bottom: 8px;
+}
+
+.badge-tersedia {
+    background: #d4f5e2;
+    color: #1a7a40;
+    border: 1px solid #a3e0be;
+}
+
+.badge-sedikit {
+    background: #fff3cd;
+    color: #8a6000;
+    border: 1px solid #ffc107;
+}
+
+.badge-habis {
+    background: #fde8e8;
+    color: #b50000;
+    border: 1px solid #f5a5a5;
+}
+
+.action-cell {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 130px;
+}
+
+.stok-cell {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 70px;
+}
+
+.action-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.action-links .sep {
+    color: #bbb;
+    font-size: 13px;
+}
+
+.stok-link {
+    color: #6a4c4c;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.stok-link:hover {
+    text-decoration: underline;
+}

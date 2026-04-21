@@ -15,8 +15,9 @@ $biodata = $resultData['biodata'];
 <html>
 <head>	
 	<title>Edit Penulis</title>
+	<link rel="stylesheet" href="../style1.css">
 </head>
-<!-- <link rel="stylesheet" href="../style1.css"> -->
+
 
 <body>
     <h2>Edit Penulis</h2>

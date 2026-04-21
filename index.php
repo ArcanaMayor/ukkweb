@@ -28,11 +28,13 @@ $total = mysqli_fetch_assoc($count)['total'];
 $total_page = ceil($total / $limit);
 
 $result = mysqli_query($mysqli, 
-    "SELECT buku.*, penerbit.nama_penerbit, penulis.nama_penulis, kategori.nama_kategori
+    "SELECT buku.*, penerbit.nama_penerbit, penulis.nama_penulis, kategori.nama_kategori,
+            COALESCE(stok.jumlah, 0) AS jumlah_stok, stok.id_stok
      FROM buku
      LEFT JOIN penerbit ON buku.id_penerbit = penerbit.id_penerbit
      LEFT JOIN penulis ON buku.id_penulis = penulis.id_penulis
      LEFT JOIN kategori ON buku.id_kategori = kategori.id_kategori
+     LEFT JOIN stok ON buku.id_buku = stok.id_buku
      $where
      ORDER BY buku.id_buku DESC
      LIMIT $start, $limit"
@@ -59,6 +61,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
             <a href="kategori">Kategori</a>
             <a href="penerbit">Penerbit</a>
             <a href="penulis">Penulis</a>
+            <a href="stok">Stok</a>
         </div>
     </div>
 </nav>
@@ -87,6 +90,7 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
         <th>Tahun</th>
         <th>Kategori</th>
         <th>Ringkasan</th>
+        <th>Stok</th>
         <th>Action</th>
     </tr>
 
@@ -99,13 +103,33 @@ $next = ($page < $total_page) ? $page + 1 : $total_page;
             <td><?= $res['nama_kategori'] ?></td>
             <td><?= $res['ringkasan'] ?></td>
 
-            <td>
-                <a class="edit" href="edit.php?id_buku=<?= $res['id_buku'] ?>">Edit</a> |
-                <a class="delete"
-                   href="delete.php?id_buku=<?= $res['id_buku'] ?>"
-                   onclick="return confirm('Yakin ingin hapus?')">
-                   Delete
-                </a>
+            <td class="stok-cell">
+                <?php
+                    $stok = (int)$res['jumlah_stok'];
+                    if ($stok == 0) {
+                        $badge_class = 'badge-habis';
+                        $badge_label = 'Habis';
+                    } elseif ($stok <= 3) {
+                        $badge_class = 'badge-sedikit';
+                        $badge_label = $stok;
+                    } else {
+                        $badge_class = 'badge-tersedia';
+                        $badge_label = $stok;
+                    }
+                ?>
+                <span class="stok-badge <?= $badge_class ?>"><?= $badge_label ?></span>
+            </td>
+
+            <td class="action-cell">
+                <div class="action-links">
+                    <a class="edit" href="edit.php?id_buku=<?= $res['id_buku'] ?>">Edit</a>
+                    <span class="sep">|</span>
+                    <a class="delete"
+                       href="delete.php?id_buku=<?= $res['id_buku'] ?>"
+                       onclick="return confirm('Yakin ingin hapus?')">Delete</a>
+                    <span class="sep">|</span>
+                    <a class="stok-link" href="stok/edit.php?id_stok=<?= $res['id_stok'] ?>">Stok</a>
+                </div>
             </td>
         </tr>
     <?php } ?>
